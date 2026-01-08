@@ -1,0 +1,101 @@
+Property_ID,Property_Name,Location,Property_Type,Bedrooms,Bathrooms,Size_sqft,Price_USD,Year_Built,Status
+P0001,Property 1,"Los Angeles, CA",Apartment,3,2,2328,398088,1963,Rented
+P0002,Property 2,"Dallas, TX",Apartment,5,4,760,87400,1961,Available
+P0003,Property 3,"Houston, TX",Studio,5,1,2128,991648,2019,Sold
+P0004,Property 4,"Houston, TX",Townhouse,5,3,553,269864,1970,Rented
+P0005,Property 5,"San Antonio, TX",Condo,3,2,2263,1108870,1993,Available
+P0006,Property 6,"Los Angeles, CA",Townhouse,1,3,3317,1356653,1983,Available
+P0007,Property 7,"San Diego, CA",Studio,1,4,1145,437390,1987,Rented
+P0008,Property 8,"San Jose, CA",Condo,5,2,1069,131487,1979,Sold
+P0009,Property 9,"Los Angeles, CA",House,1,4,2777,921964,1996,Available
+P0010,Property 10,"Philadelphia, PA",Condo,2,3,1084,445524,1971,Rented
+P0011,Property 11,"Houston, TX",House,4,4,2711,1157597,2021,Available
+P0012,Property 12,"Philadelphia, PA",Apartment,2,1,3084,940620,1984,Available
+P0013,Property 13,"Houston, TX",Studio,3,2,4589,1385878,2008,Available
+P0014,Property 14,"Phoenix, AZ",House,2,3,4009,1595582,2001,Sold
+P0015,Property 15,"Houston, TX",House,5,4,1244,604584,1956,Available
+P0016,Property 16,"Chicago, IL",House,4,1,3652,1077340,2009,Rented
+P0017,Property 17,"Phoenix, AZ",Studio,1,1,4898,2370632,1984,Rented
+P0018,Property 18,"Philadelphia, PA",Apartment,3,4,1795,595940,1950,Rented
+P0019,Property 19,"Phoenix, AZ",Studio,2,1,2944,1257088,2014,Rented
+P0020,Property 20,"Houston, TX",House,3,2,4918,2449164,2017,Available
+P0021,Property 21,"San Jose, CA",Condo,4,1,1416,403560,1989,Available
+P0022,Property 22,"New York, NY",House,5,1,1201,569274,2012,Available
+P0023,Property 23,"Dallas, TX",House,2,4,1852,435220,2017,Rented
+P0024,Property 24,"San Antonio, TX",House,5,2,3053,928112,1997,Sold
+P0025,Property 25,"Dallas, TX",Townhouse,1,2,2340,308880,1993,Available
+P0026,Property 26,"San Jose, CA",Studio,2,2,558,75888,1957,Available
+P0027,Property 27,"Los Angeles, CA",Apartment,3,1,4711,1041131,1985,Rented
+P0028,Property 28,"San Diego, CA",House,5,2,4372,979328,2010,Sold
+P0029,Property 29,"Houston, TX",Apartment,1,4,3402,1075032,2002,Sold
+P0030,Property 30,"New York, NY",Apartment,1,4,3279,508245,1981,Available
+P0031,Property 31,"Houston, TX",Studio,4,2,3956,763508,1985,Sold
+P0032,Property 32,"Houston, TX",Apartment,4,1,914,395762,2019,Available
+P0033,Property 33,"Los Angeles, CA",House,2,4,4478,1549388,1977,Sold
+P0034,Property 34,"New York, NY",House,4,1,3698,869030,2008,Sold
+P0035,Property 35,"San Antonio, TX",Studio,4,2,2055,515805,1977,Available
+P0036,Property 36,"San Jose, CA",Studio,1,3,968,121000,2011,Rented
+P0037,Property 37,"Dallas, TX",House,1,1,2022,272970,1958,Rented
+P0038,Property 38,"Houston, TX",Townhouse,1,2,825,344025,1960,Sold
+P0039,Property 39,"San Jose, CA",Studio,5,3,2636,537744,1990,Available
+P0040,Property 40,"Phoenix, AZ",Townhouse,2,3,4245,1107945,1959,Available
+P0041,Property 41,"San Diego, CA",Studio,5,1,1100,412500,1977,Rented
+P0042,Property 42,"Phoenix, AZ",House,3,1,2501,722789,1986,Available
+P0043,Property 43,"San Diego, CA",Studio,3,1,2952,1295928,1963,Available
+P0044,Property 44,"Phoenix, AZ",Apartment,1,2,2731,666364,1976,Rented
+P0045,Property 45,"Philadelphia, PA",House,3,4,2557,322182,1961,Rented
+P0046,Property 46,"San Antonio, TX",Condo,1,1,3232,1596608,1966,Rented
+P0047,Property 47,"Phoenix, AZ",House,4,4,579,90903,1959,Rented
+P0048,Property 48,"Chicago, IL",Studio,1,3,1713,548160,1966,Available
+P0049,Property 49,"Phoenix, AZ",Condo,1,3,2220,996780,1981,Rented
+P0050,Property 50,"Los Angeles, CA",Condo,5,4,1766,390286,1970,Available
+P0051,Property 51,"San Antonio, TX",Apartment,2,3,3872,1711424,1981,Sold
+P0052,Property 52,"Chicago, IL",Apartment,4,1,4355,927615,1975,Sold
+P0053,Property 53,"Philadelphia, PA",Condo,2,2,693,302841,1974,Sold
+P0054,Property 54,"Philadelphia, PA",Condo,1,3,3376,1444928,2015,Sold
+P0055,Property 55,"Dallas, TX",Condo,1,1,2639,504049,1983,Available
+P0056,Property 56,"Los Angeles, CA",Studio,4,3,3069,991287,2015,Available
+P0057,Property 57,"San Antonio, TX",Studio,2,3,863,398706,2005,Available
+P0058,Property 58,"Dallas, TX",Studio,2,3,4033,544455,1992,Rented
+P0059,Property 59,"Philadelphia, PA",Apartment,3,3,3845,1026615,2001,Rented
+P0060,Property 60,"Phoenix, AZ",Studio,2,2,3944,1735360,1998,Rented
+P0061,Property 61,"Chicago, IL",Studio,5,3,3826,1453880,1950,Sold
+P0062,Property 62,"Phoenix, AZ",House,4,3,4309,1404734,2006,Rented
+P0063,Property 63,"Houston, TX",Studio,4,2,1194,292530,2015,Rented
+P0064,Property 64,"San Jose, CA",Condo,1,2,3042,654030,1975,Available
+P0065,Property 65,"New York, NY",Apartment,2,4,1096,364968,2003,Rented
+P0066,Property 66,"San Jose, CA",House,4,4,3773,845152,1968,Rented
+P0067,Property 67,"New York, NY",Apartment,4,2,1940,884640,2016,Sold
+P0068,Property 68,"New York, NY",Studio,2,1,4239,712152,2009,Rented
+P0069,Property 69,"Dallas, TX",Studio,5,3,4125,1703625,2014,Sold
+P0070,Property 70,"Dallas, TX",Townhouse,2,4,4186,971152,1981,Rented
+P0071,Property 71,"Phoenix, AZ",Studio,4,2,2749,893425,1959,Rented
+P0072,Property 72,"Phoenix, AZ",House,3,3,3119,1172744,1960,Available
+P0073,Property 73,"Chicago, IL",House,4,2,2252,297264,2003,Sold
+P0074,Property 74,"Philadelphia, PA",Studio,4,4,1010,207050,2003,Sold
+P0075,Property 75,"San Jose, CA",Apartment,5,4,4407,453921,1995,Sold
+P0076,Property 76,"San Antonio, TX",Townhouse,5,2,4499,953788,1984,Sold
+P0077,Property 77,"San Diego, CA",Apartment,4,3,3812,1791640,1971,Sold
+P0078,Property 78,"Chicago, IL",Studio,5,1,3727,1501981,2022,Rented
+P0079,Property 79,"New York, NY",Apartment,4,2,4282,826426,1956,Sold
+P0080,Property 80,"San Antonio, TX",Condo,2,4,3177,864144,1998,Sold
+P0081,Property 81,"San Antonio, TX",Condo,1,4,658,317814,2019,Available
+P0082,Property 82,"Philadelphia, PA",House,1,1,754,170404,1975,Available
+P0083,Property 83,"San Jose, CA",House,2,2,4379,1935518,1964,Rented
+P0084,Property 84,"Houston, TX",Townhouse,3,3,1874,768340,1964,Available
+P0085,Property 85,"Phoenix, AZ",Apartment,5,1,3055,1203670,1998,Sold
+P0086,Property 86,"Houston, TX",Apartment,5,2,1334,608304,1988,Rented
+P0087,Property 87,"San Jose, CA",Apartment,5,1,3344,1243968,2004,Rented
+P0088,Property 88,"Philadelphia, PA",Apartment,5,3,603,189945,2012,Available
+P0089,Property 89,"San Antonio, TX",Condo,4,2,4067,772730,2016,Rented
+P0090,Property 90,"Phoenix, AZ",Studio,5,4,4308,1391484,1984,Sold
+P0091,Property 91,"Houston, TX",Apartment,3,4,2497,1208548,2009,Rented
+P0092,Property 92,"San Jose, CA",Townhouse,3,1,4549,1210034,1973,Sold
+P0093,Property 93,"Houston, TX",Condo,3,3,2790,1129950,1985,Rented
+P0094,Property 94,"New York, NY",Studio,2,1,2477,1159236,2002,Sold
+P0095,Property 95,"Dallas, TX",House,4,4,4171,450468,1961,Sold
+P0096,Property 96,"Houston, TX",Townhouse,2,3,3523,1204866,2020,Rented
+P0097,Property 97,"Philadelphia, PA",Townhouse,5,3,3382,1552338,2008,Sold
+P0098,Property 98,"Phoenix, AZ",Condo,2,1,2077,542097,1965,Rented
+P0099,Property 99,"Dallas, TX",House,2,2,4466,1076306,2017,Rented
+P0100,Property 100,"Phoenix, AZ",Apartment,2,3,2363,671092,1972,Sold

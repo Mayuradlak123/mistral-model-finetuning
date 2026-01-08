@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mistral AI Property Assistant</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        slate: {
+                            800: '#1e293b',
+                            900: '#0f172a',
+                        },
+                        blue: {
+                            500: '#3b82f6',
+                        },
+                        violet: {
+                            500: '#8b5cf6',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Markdown Parser -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <style>
+        /* Custom scrollbar to match the dark theme */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+        }
+
+        .glass {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .typing-dot {
+            animation: bounce 1.4s infinite ease-in-out both;
+        }
+
+        .typing-dot:nth-child(1) {
+            animation-delay: -0.32s;
+        }
+
+        .typing-dot:nth-child(2) {
+            animation-delay: -0.16s;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            80%,
+            100% {
+                transform: scale(0);
+            }
+
+            40% {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+
+<body
+    class="bg-slate-900 text-slate-50 font-sans h-screen flex justify-center items-center overflow-hidden bg-[radial-gradient(circle_at_10%_20%,rgba(59,130,246,0.15)_0%,transparent_20%),radial-gradient(circle_at_90%_80%,rgba(139,92,246,0.15)_0%,transparent_20%)]">
+    <div class="w-[90%] max-w-7xl h-[90vh] flex gap-5">
+        <!-- Sidebar -->
+        <aside class="w-64 glass rounded-2xl p-5 flex flex-col shadow-xl hidden md:flex">
+            <div
+                class="text-2xl font-bold mb-8 bg-gradient-to-r from-blue-500 to-violet-500 text-transparent bg-clip-text text-center">
+                Nova Estatem
+            </div>
+
+            <div class="mb-5">
+                <label class="block mb-2 text-slate-400 text-sm">Model Selection</label>
+                <select id="model-select"
+                    class="w-full p-2.5 bg-slate-900/60 border border-white/10 rounded-lg text-white outline-none focus:border-blue-500 transition-colors">
+                    <option value="mistral-tiny">Mistral Tiny (Base)</option>
+                    <option value="mistral-small">Mistral Small</option>
+                    <option value="mistral-medium">Mistral Medium</option>
+                    <option value="fine-tuned-latest">Fine-Tuned Property Model</option>
+                </select>
+            </div>
+
+            <div class="mb-5">
+                <label class="block mb-2 text-slate-400 text-sm">Temperature: <span id="temp-val">0.7</span></label>
+                <input type="range" min="0" max="1" step="0.1" value="0.7" id="temp-range"
+                    class="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer">
+            </div>
+        </aside>
+
+        <!-- Chat Interface -->
+        <main class="flex-1 glass rounded-2xl flex flex-col shadow-xl relative overflow-hidden">
+            <header class="p-5 border-b border-white/10 flex items-center justify-between">
+                <h2 class="text-lg font-semibold">Real Estate Assistant</h2>
+                <!-- Mobile toggle could go here -->
+            </header>
+
+            <div id="messages" class="flex-1 overflow-y-auto p-5 flex flex-col gap-5 scroll-smooth">
+                <div
+                    class="self-start max-w-[80%] p-4 rounded-xl rounded-bl-sm bg-blue-500/20 border border-blue-500/30 animate-fade-in">
+                    <span class="text-xs text-slate-400 block mb-1">Assistant</span>
+                    <div class="leading-relaxed">
+                        Hello! I am your AI assistant for property inquiries. How can I help you today?
+                    </div>
+                </div>
+            </div>
+
+            <div class="p-5 bg-slate-900/40 border-t border-white/10 flex gap-4 items-end">
+                <textarea id="user-input"
+                    class="flex-1 bg-slate-900/60 border border-white/10 rounded-xl p-4 text-white resize-none h-[60px] outline-none focus:border-blue-500 transition-colors"
+                    placeholder="Type your question about properties..."></textarea>
+                <button id="send-btn"
+                    class="w-[60px] h-[60px] rounded-xl bg-gradient-to-br from-blue-500 to-violet-500 text-white flex justify-center items-center hover:-translate-y-0.5 hover:shadow-lg transition-all active:translate-y-0">
+                    <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+                        <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path>
+                    </svg>
+                </button>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        const chatBox = document.getElementById('messages');
+        const userInput = document.getElementById('user-input');
+        const sendBtn = document.getElementById('send-btn');
+        const modelSelect = document.getElementById('model-select');
+        const tempRange = document.getElementById('temp-range');
+        const tempVal = document.getElementById('temp-val');
+
+        tempRange.addEventListener('input', (e) => {
+            tempVal.textContent = e.target.value;
+        });
+
+        // Auto-resize textarea
+        userInput.addEventListener('input', function () {
+            this.style.height = 'auto';
+            this.style.height = (this.scrollHeight) + 'px';
+            if (this.value === '') this.style.height = '60px';
+        });
+
+        // Send Message Logic
+        async function sendMessage() {
+            const text = userInput.value.trim();
+            if (!text) return;
+
+            // Add User Message
+            appendMessage('user', text);
+            userInput.value = '';
+            userInput.style.height = '60px';
+
+            // Show Loading
+            const loadingId = appendLoading();
+
+            try {
+                const response = await fetch('/api/chat', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        messages: [{ role: 'user', content: text }],
+                        model: modelSelect.value,
+                        temperature: parseFloat(tempRange.value)
+                    })
+                });
+
+                const data = await response.json();
+
+                // Remove loading
+                removeLoading(loadingId);
+
+                // Add Bot Message
+                if (data.response) {
+                    appendMessage('bot', data.response);
+                } else {
+                    appendMessage('bot', 'Error: No response from server.');
+                }
+
+            } catch (error) {
+                removeLoading(loadingId);
+                appendMessage('bot', 'Error: Could not connect to server.');
+                console.error(error);
+            }
+        }
+
+        function appendMessage(role, text) {
+            const isUser = role === 'user';
+
+            const msgDiv = document.createElement('div');
+            // Tailwind classes for message bubbles
+            msgDiv.className = `max-w-[80%] p-4 rounded-xl relative animate-[fadeIn_0.3s_ease-out] border ${isUser
+                    ? 'self-end rounded-br-sm bg-violet-500/20 border-violet-500/30'
+                    : 'self-start rounded-bl-sm bg-blue-500/20 border-blue-500/30'
+                }`;
+
+            const roleSpan = document.createElement('span');
+            roleSpan.className = 'text-xs text-slate-400 block mb-1';
+            roleSpan.textContent = isUser ? 'You' : 'Assistant';
+
+            const contentDiv = document.createElement('div');
+            contentDiv.className = 'leading-relaxed break-words'; // break-words to prevent overflow
+
+            if (role === 'bot') {
+                contentDiv.innerHTML = marked.parse(text);
+                // Style markdown elements inside
+                contentDiv.querySelectorAll('ul').forEach(ul => ul.classList.add('list-disc', 'ml-4'));
+                contentDiv.querySelectorAll('ol').forEach(ol => ol.classList.add('list-decimal', 'ml-4'));
+                contentDiv.querySelectorAll('p').forEach(p => p.classList.add('mb-2'));
+            } else {
+                contentDiv.textContent = text;
+            }
+
+            msgDiv.appendChild(roleSpan);
+            msgDiv.appendChild(contentDiv);
+
+            chatBox.appendChild(msgDiv);
+            scrollToBottom();
+        }
+
+        function appendLoading() {
+            const id = 'loading-' + Date.now();
+            const msgDiv = document.createElement('div');
+            msgDiv.className = 'self-start max-w-[80%] p-4 rounded-xl rounded-bl-sm bg-blue-500/20 border border-blue-500/30';
+            msgDiv.id = id;
+
+            const contentDiv = document.createElement('div');
+            contentDiv.className = 'flex gap-1.5 p-1';
+            contentDiv.innerHTML = `
+                <div class="w-2 h-2 bg-slate-400 rounded-full typing-dot"></div>
+                <div class="w-2 h-2 bg-slate-400 rounded-full typing-dot"></div>
+                <div class="w-2 h-2 bg-slate-400 rounded-full typing-dot"></div>
+            `;
+
+            msgDiv.appendChild(contentDiv);
+            chatBox.appendChild(msgDiv);
+            scrollToBottom();
+            return id;
+        }
+
+        function removeLoading(id) {
+            const el = document.getElementById(id);
+            if (el) el.remove();
+        }
+
+        function scrollToBottom() {
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+        sendBtn.addEventListener('click', sendMessage);
+        userInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendMessage();
+            }
+        });
+    </script>
+</body>
+
+</html>

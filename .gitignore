@@ -1,0 +1,6 @@
+.env
+__pycache__
+scripts/training_data.jsonl
+scripts/validation_data.jsonl
+mistral_finetuning.egg-info
+/logs
