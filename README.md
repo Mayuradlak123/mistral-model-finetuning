@@ -51,7 +51,21 @@ mistral-model-finetuning/
 *   A valid [Mistral API Key](https://console.mistral.ai/).
 
 ### 2. Clone & Install
-Clone the repository and install dependencies. **Crucially**, install the project in editable mode to ensure imports work correctly across scripts.
+
+**Option A: Automated Setup (Recommended)**
+Use the provided setup script that handles everything automatically:
+
+```bash
+./setup.sh
+```
+
+This script will:
+- Install all dependencies from `requirements.txt`
+- Install the project in editable mode (`pip install -e .`)
+- Set up the necessary directory structure
+
+**Option B: Manual Setup**
+If you prefer to install manually:
 
 ```bash
 # Install dependencies
