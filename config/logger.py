@@ -65,4 +65,4 @@ log_config = {
 }
 
 dictConfig(log_config)
-logger = logging.getLogger("mistral-model-finetuning")
+logger = logging.getLogger("app")

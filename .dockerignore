@@ -1,0 +1,16 @@
+__pycache__/
+*.py[cod]
+*$py.class
+.env
+.venv
+venv/
+ENV/
+.git/
+.gitignore
+README.md
+setup.sh
+run.sh
+logs/
+data/
+chroma_data/
+mongo_data/

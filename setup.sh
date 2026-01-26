@@ -5,6 +5,7 @@
 
 python.exe -m pip install --upgrade pip
 
+
 # 3. Pip Install
 echo "📦 Installing dependencies..."
 pip install -r requirements.txt
