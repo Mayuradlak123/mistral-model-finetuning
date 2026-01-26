@@ -44,7 +44,35 @@ mistral-model-finetuning/
 └── setup.py             # Setup file for editable install
 ```
 
-## ⚙️ Setup & Installation
+## Docker Setup
+
+The application is fully dockerized and includes MongoDB, ChromaDB, and Redis.
+
+### Prerequisites
+- Docker and Docker Compose installed.
+
+### Quick Start
+1.  **Clone the repository** (if you haven't already).
+2.  **Configure Environment**: Ensure your `.env` file is present in the root directory.
+3.  **Run with Docker Compose**:
+    ```bash
+    docker compose up --build
+    ```
+
+### Services
+Once running, you can access the following services:
+- **FastAPI Web App**: `http://localhost:8000`
+- **FastAPI Docs (Swagger)**: `http://localhost:8000/docs`
+- **ChromaDB**: `http://localhost:8001`
+- **MongoDB**: `mongodb://localhost:27017`
+- **Redis**: `localhost:6379`
+
+### Multi-stage Build
+The `Dockerfile` uses a multi-stage build to keep the final image size small and secure by separating the build dependencies from the runtime environment.
+
+---
+
+## Local Setup (Non-Docker)
 
 ### 1. Prerequisites
 *   Python 3.10 or higher.
